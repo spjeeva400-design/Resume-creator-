@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeeva Resume Creation | Elite Live Designer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Fira+Code&family=Montserrat:wght@300;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-deep: #312e81;
+            --primary-accent: #6366f1;
+            --soft-bg: #f8fafc;
+        }
+
+        body { font-family: 'Outfit', sans-serif; background-color: var(--soft-bg); }
+        .hidden { display: none; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-accent));
+            transition: all 0.3s ease;
+        }
+
+        /* THE LIVE RESUME SYSTEM */
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--resume-bg, white);
+            color: var(--resume-text, #1e293b);
+            font-family: var(--resume-font, 'Outfit', sans-serif);
+            margin: auto;
+            box-shadow: 0 0 60px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Highlight for editable areas */
+        [contenteditable="true"]:hover {
+            outline: 2px dashed var(--primary-accent);
+            background: rgba(99, 102, 241, 0.05);
+            cursor: text;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .a4-page { box-shadow: none; margin: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: START PAGE -->
+    <div id="start-page" class="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white">
+        <div class="animate-fade-up">
+            <div class="mb-6 inline-block p-4 bg-indigo-500/20 rounded-full shadow-[0_0_40px_rgba(99,102,241,0.4)]">
+                <i class="fa-solid fa-crown text-5xl text-indigo-400"></i>
+            </div>
+            <h1 class="text-7xl font-extrabold tracking-tighter mb-4" style="font-family: 'Syne';">
+                JEEVA <span class="text-indigo-400">RESUME</span> CREATION
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                The most advanced live resume designer. Edit, Style, and Perfect your career identity in real-time.
+            </p>
+            <button onclick="goToInput()" class="btn-premium px-12 py-5 rounded-full text-xl font-bold uppercase tracking-widest shadow-2xl">
+                Start Designing <i class="fa-solid fa-arrow-right ml-3"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- PAGE 2: INPUT DASHBOARD -->
+    <div id="input-page" class="hidden min-h-screen pb-20">
+        <header class="bg-white p-8 text-center shadow-sm border-b border-indigo-100 mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-900" style="font-family: 'Syne';">
+                <span class="text-indigo-600">JEEVA</span> RESUME <span class="font-light">STUDIO</span>
+            </h2>
+        </header>
+
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div class="lg:col-span-2 space-y-8">
+                <div class="glass-card p-8 rounded-3xl border-l-8 border-indigo-600">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center"><i class="fa-solid fa-user-tie mr-3 text-indigo-600"></i> Identity</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <input type="text" id="inName" placeholder="Full Name" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        <input type="text" id="inTitle" placeholder="Professional Title" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        <input type="email" id="inEmail" placeholder="Email" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        <input type="text" id="inPhone" placeholder="Phone" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        <input type="text" id="inLinkedIn" placeholder="LinkedIn" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        <input type="text" id="inLocation" placeholder="City, Country" class="p-4 border rounded-2xl w-full focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-8 border-indigo-600">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center"><i class="fa-solid fa-graduation-cap mr-3 text-indigo-600"></i> Academic Journey</h2>
+                    <div id="edu-list" class="space-y-4">
+                        <div class="edu-item grid grid-cols-1 md:grid-cols-2 gap-3 p-5 bg-indigo-50/50 rounded-2xl border border-indigo-100">
+                            <input type="text" placeholder="Degree" class="p-3 border rounded-xl edu-deg">
+                            <input type="text" placeholder="Institution" class="p-3 border rounded-xl edu-sch">
+                            <input type="text" placeholder="Year" class="p-3 border rounded-xl edu-yr">
+                            <input type="text" placeholder="GPA" class="p-3 border rounded-xl edu-gpa">
+                        </div>
+                    </div>
+                    <button onclick="addItem('edu-list', '.edu-item')" class="mt-5 text-indigo-600 font-bold hover:text-indigo-800 transition-all"><i class="fa-solid fa-circle-plus mr-2"></i> Add Milestone</button>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-8 border-indigo-600">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center"><i class="fa-solid fa-microchip mr-3 text-indigo-600"></i> Expertise</h2>
+                    <textarea id="inSkills" placeholder="Separate skills by commas..." class="w-full p-4 border rounded-2xl h-32 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"></textarea>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-8 border-indigo-600">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center"><i class="fa-solid fa-diagram-project mr-3 text-indigo-600"></i> Portfolio Work</h2>
+                    <div id="proj-list" class="space-y-4">
+                        <div class="proj-item grid gap-3 p-5 bg-indigo-50/50 rounded-2xl border border-indigo-100">
+                            <input type="text" placeholder="Project Name" class="p-3 border rounded-xl proj-tit">
+                            <textarea placeholder="What did you achieve?" class="p-3 border rounded-xl proj-des"></textarea>
+                        </div>
+                    </div>
+                    <button onclick="addItem('proj-list', '.proj-item')" class="mt-5 text-indigo-600 font-bold hover:text-indigo-800 transition-all"><i class="fa-solid fa-circle-plus mr-2"></i> Add Project</button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="glass-card p-8 rounded-3xl sticky top-8 border-t-8 border-slate-900">
+                    <h2 class="text-2xl font-extrabold mb-6 text-slate-800 flex items-center">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-3 text-indigo-600"></i> Resume Styles
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4" id="template-grid"></div>
+                    <button onclick="generateResume()" class="w-full mt-8 py-5 btn-premium text-white rounded-2xl font-bold text-xl shadow-2xl transform active:scale-95">
+                        Generate Resume <i class="fa-solid fa-screwdriver-wrench ml-2 text-indigo-200"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: LIVE DESIGN STUDIO -->
+    <div id="output-page" class="hidden min-h-screen bg-slate-200 py-12">
+        <div class="no-print flex justify-center gap-6 mb-10">
+            <button onclick="goBack()" class="px-8 py-3 bg-white text-slate-800 rounded-full font-bold hover:bg-slate-100 transition-all shadow-md border border-slate-200"><i class="fa-solid fa-arrow-left mr-2"></i> Edit Details</button>
+            <button onclick="window.print()" class="px-8 py-3 btn-premium text-white rounded-full font-bold transition-all shadow-lg"><i class="fa-solid fa-file-pdf mr-2"></i> Export PDF</button>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row gap-10 justify-center items-start px-6">
+            <!-- THE RESUME -->
+            <div id="resume-render-area"></div>
+
+            <!-- THE DESIGN CONTROL PANEL -->
+            <div class="no-print w-full lg:w-80 glass-card p-6 rounded-3xl sticky top-10 border-t-8 border-indigo-600">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
+                    <i class="fa-solid fa-palette mr-3 text-indigo-600"></i> Live Editor
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Color Controls -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-slate-500 block mb-2">Accent Color</label>
+                        <input type="color" id="colorAccent" oninput="updateStyle('--resume-accent', this.value)" class="w-full h-10 rounded-lg cursor-pointer">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase text-slate-500 block mb-2">Page Background</label>
+                        <input type="color" id="colorBg" oninput="updateStyle('--resume-bg', this.value)" class="w-full h-10 rounded-lg cursor-pointer">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase text-slate-500 block mb-2">Text Color</label>
+                        <input type="color" id="colorText" oninput="updateStyle('--resume-text', this.value)" class="w-full h-10 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Font Control -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-slate-500 block mb-2">Typography</label>
+                        <select onchange="updateStyle('--resume-font', this.value)" class="w-full p-3 border rounded-xl bg-white outline-none">
+                            <option value="'Outfit', sans-serif">Modern Sans</option>
+                            <option value="'Playfair Display', serif">Luxury Serif</option>
+                            <option "'Crimson Pro', serif" value="'Crimson Pro', serif">Classic Academic</option>
+                            <option value="'Fira Code', monospace">Tech Mono</option>
+                            <option value="'Montserrat', sans-serif">Bold Geometric</option>
+                        </select>
+                    </div>
+
+                    <!-- Layout Switcher -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-slate-500 block mb-2">Switch Layout</label>
+                        <select onchange="changeLayout(this.value)" class="w-full p-3 border rounded-xl bg-white outline-none">
+                            <option value="corporate">Corporate</option>
+                            <option value="tech">Technical</option>
+                            <option value="creative">Creative</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="versatile">Versatile</option>
+                        </select>
+                    </div>
+                    
+                    <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                        <p class="text-[11px] text-indigo-600 leading-relaxed">
+                            <i class="fa-solid fa-circle-info mr-1"></i> 
+                            <strong>Pro Tip:</strong> You can click and type directly on the resume to change any text!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const templates = [
+            { id: 'corp-exec', name: 'Executive', type: 'corporate', color: '#1e3a8a', bg: '#ffffff', text: '#1e293b' },
+            { id: 'corp-modern', name: 'Modern Corp', type: 'corporate', color: '#475569', bg: '#f8fafc', text: '#0f172a' },
+            { id: 'corp-acad', name: 'Academic', type: 'corporate', color: '#7f1d1d', bg: '#fffdfa', text: '#1a1a1a' },
+            { id: 'corp-trust', name: 'Trustworthy', type: 'corporate', color: '#14532d', bg: '#fefce8', text: '#064e3b' },
+            { id: 'corp-mono', name: 'Monochrome', type: 'corporate', color: '#000000', bg: '#ffffff', text: '#000000' },
+            { id: 'tech-dark', name: 'Dark Mode', type: 'tech', color: '#3b82f6', bg: '#0f172a', text: '#f1f5f9' },
+            { id: 'tech-startup', name: 'Startup', type: 'tech', color: '#2563eb', bg: '#ffffff', text: '#1e293b' },
+            { id: 'tech-cyber', name: 'Cyber Sleek', type: 'tech', color: '#84cc16', bg: '#111827', text: '#e2e8f0' },
+            { id: 'tech-minimal', name: 'Minimal Tech', type: 'tech', color: '#8b5cf6', bg: '#f9fafb', text: '#111827' },
+            { id: 'tech-dev', name: 'Developer', type: 'tech', color: '#10b981', bg: '#1e293b', text: '#cbd5e1' },
+            { id: 'cre-bauhaus', name: 'Bauhaus', type: 'creative', color: '#ef4444', bg: '#ffffff', text: '#000000' },
+            { id: 'cre-pastel', name: 'Pastel Dream', type: 'creative', color: '#c084fc', bg: '#fdf2f8', text: '#581c87' },
+            { id: 'cre-contrast', name: 'Contrast', type: 'creative', color: '#fbbf24', bg: '#000000', text: '#ffffff' },
+            { id: 'cre-earthy', name: 'Earthy', type: 'creative', color: '#b45309', bg: '#fef3c7', text: '#451a03' },
+            { id: 'cre-pop', name: 'Pop Art', type: 'creative', color: '#ec4899', bg: '#ffffff', text: '#1e293b' },
+            { id: 'lux-champ', name: 'Champagne', type: 'luxury', color: '#d4af37', bg: '#fdfbf7', text: '#454545' },
+            { id: 'lux-mid', name: 'Midnight', type: 'luxury', color: '#c0c0c0', bg: '#0f172a', text: '#f8fafc' },
+            { id: 'lux-paris', name: 'Parisian', type: 'luxury', color: '#fda4af', bg: '#fffafb', text: '#334155' },
+            { id: 'lux-emerald', name: 'Emerald', type: 'luxury', color: '#d4af37', bg: '#064e3b', text: '#fdfbf7' },
+            { id: 'lux-zen', name: 'Zen Sage', type: 'luxury', color: '#86efac', bg: '#f0fdf4', text: '#166534' },
+            { id: 'ver-scandi', name: 'Scandi', type: 'versatile', color: '#64748b', bg: '#f8fafc', text: '#334155' },
+            { id: 'ver-warm', name: 'Warm Pro', type: 'versatile', color: '#92400e', bg: '#fffbeb', text: '#451a03' },
+            { id: 'ver-vibrant', name: 'Vibrant', type: 'versatile', color: '#14b8a6', bg: '#ffffff', text: '#1e293b' },
+            { id: 'ver-airy', name: 'The Airy', type: 'versatile', color: '#bae6fd', bg: '#ffffff', text: '#0f172a' },
+            { id: 'ver-urban', name: 'Urban', type: 'versatile', color: '#ea580c', bg: '#f1f5f9', text: '#334155' },
+        ];
+
+        let selectedTemplate = 'corp-exec';
+        let currentData = {};
+
+        const grid = document.getElementById('template-grid');
+        templates.forEach(t => {
+            const btn = document.createElement('button');
+            btn.className = `group p-2 rounded-2xl border-2 transition-all text-center bg-white ${t.id === 'corp-exec' ? 'border-indigo-600 ring-4 ring-indigo-100' : 'border-slate-100'}`;
+            btn.innerHTML = `
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-full h-6 rounded-lg flex overflow-hidden border border-slate-200">
+                        <div class="w-1/2 h-full" style="background: ${t.color}"></div>
+                        <div class="w-1/2 h-full" style="background: ${t.bg}"></div>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-tight text-slate-600 group-hover:text-indigo-600 transition-colors">${t.name}</span>
+                </div>
+            `;
+            btn.onclick = () => {
+                document.querySelectorAll('#template-grid button').forEach(b => b.classList.remove('border-indigo-600', 'ring-4', 'ring-indigo-100'));
+                btn.classList.add('border-indigo-600', 'ring-4', 'ring-indigo-100');
+                selectedTemplate = t.id;
+            };
+            grid.appendChild(btn);
+        });
+
+        function goToInput() { document.getElementById('start-page').classList.add('hidden'); document.getElementById('input-page').classList.remove('hidden'); }
+        function addItem(containerId, itemClass) {
+            const container = document.getElementById(containerId);
+            const clone = container.firstElementChild.cloneNode(true);
+            clone.querySelectorAll('input, textarea').forEach(i => i.value = '');
+            container.appendChild(clone);
+        }
+        function goBack() { document.getElementById('input-page').classList.remove('hidden'); document.getElementById('output-page').classList.add('hidden'); }
+
+        function updateStyle(variable, value) {
+            document.documentElement.style.setProperty(variable, value);
+        }
+
+        function changeLayout(type) {
+            // Find a template that matches the type
+            const match = templates.find(t => t.type === type);
+            selectedTemplate = match.id;
+            renderResume(currentData);
+        }
+
+        function generateResume() {
+            currentData = {
+                name: document.getElementById('inName').value || "Your Name",
+                title: document.getElementById('inTitle').value || "Professional Title",
+                email: document.getElementById('inEmail').value || "email@example.com",
+                phone: document.getElementById('inPhone').value || "123 456 789",
+                linkedin: document.getElementById('inLinkedIn').value || "linkedin.com/in/user",
+                location: document.getElementById('inLocation').value || "City, Country",
+                skills: document.getElementById('inSkills').value.split(',').filter(s => s.trim()),
+                education: Array.from(document.querySelectorAll('.edu-item')).map(item => ({ deg: item.querySelector('.edu-deg').value, sch: item.querySelector('.edu-sch').value, yr: item.querySelector('.edu-yr').value, gpa: item.querySelector('.edu-gpa').value })).filter(e => e.deg),
+                projects: Array.from(document.querySelectorAll('.proj-item')).map(item => ({ tit: item.querySelector('.proj-tit').value, des: item.querySelector('.proj-des').value })).filter(p => p.tit)
+            };
+            
+            const t = templates.find(x => x.id === selectedTemplate);
+            // Set initial colors from template
+            updateStyle('--resume-accent', t.color);
+            updateStyle('--resume-bg', t.bg);
+            updateStyle('--resume-text', t.text);
+            
+            // Set initial color pickers values
+            document.getElementById('colorAccent').value = t.color;
+            document.getElementById('colorBg').value = t.bg;
+            document.getElementById('colorText').value = t.text;
+
+            renderResume(currentData);
+            document.getElementById('input-page').classList.add('hidden');
+            document.getElementById('output-page').classList.remove('hidden');
+        }
+
+        function renderResume(data) {
+            const container = document.getElementById('resume-render-area');
+            const t = templates.find(x => x.id === selectedTemplate);
+            
+            let html = '';
+            const font = { corporate: "'Outfit', sans-serif", tech: "'Fira Code', monospace", creative: "'Syne', sans-serif", luxury: "'Playfair Display', serif", versatile: "'Outfit', sans-serif" }[t.type];
+            updateStyle('--resume-font', font);
+
+            if(t.type === 'corporate') {
+                html = `<div class="a4-page" style="background: var(--resume-bg); color: var(--resume-text)">
+                    <div class="p-12">
+                        <div class="border-b-4 pb-6 mb-8" style="border-color: var(--resume-accent)">
+                            <h1 class="text-5xl font-extrabold uppercase" contenteditable="true">${data.name}</h1>
+                            <p class="text-xl opacity-70" contenteditable="true">${data.title}</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-8">
+                            <div class="col-span-1 space-y-4 text-sm">
+                                <p><b style="color: var(--resume-accent)">Email:</b> <span contenteditable="true">${data.email}</span></p>
+                                <p><b style="color: var(--resume-accent)">Phone:</b> <span contenteditable="true">${data.phone}</span></p>
+                                <p><b style="color: var(--resume-accent)">Loc:</b> <span contenteditable="true">${data.location}</span></p>
+                                <div class="pt-6">
+                                    <h3 class="font-bold uppercase border-b mb-2" style="border-color: var(--resume-accent)">Skills</h3>
+                                    <p contenteditable="true">${data.skills.join(', ')}</p>
+                                </div>
+                            </div>
+                            <div class="col-span-2 space-y-8">
+                                <section>
+                                    <h2 class="text-xl font-bold uppercase mb-4" style="color: var(--resume-accent)">Education</h2>
+                                    ${data.education.map(e => `<div class="mb-4"><b contenteditable="true">${e.deg}</b> — <span contenteditable="true">${e.sch}</span> (<span contenteditable="true">${e.yr}</span>)</div>`).join('')}
+                                </section>
+                                <section>
+                                    <h2 class="text-xl font-bold uppercase mb-4" style="color: var(--resume-accent)">Experience</h2>
+                                    ${data.projects.map(p => `<div class="mb-4"><b contenteditable="true">${p.tit}</b><p class="text-sm" contenteditable="true">${p.des}</p></div>`).join('')}
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            } else if(t.type === 'tech') {
+                html = `<div class="a4-page p-12" style="background: var(--resume-bg); color: var(--resume-text)">
+                    <div class="border-l-8 pl-6 mb-10" style="border-color: var(--resume-accent)">
+                        <h1 class="text-5xl font-bold" style="color: var(--resume-accent)" contenteditable="true">&lt; ${data.name} /&gt;</h1>
+                        <p class="text-lg opacity-80" contenteditable="true">${data.title} | ${data.location}</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-10">
+                        <section>
+                            <h3 class="text-xl font-bold mb-4" style="color: var(--resume-accent)">[ tech_stack ]</h3>
+                            <p class="text-sm" contenteditable="true">${data.skills.join(' // ')}</p>
+                        </section>
+                        <section>
+                            <h3 class="text-xl font-bold mb-4" style="color: var(--resume-accent)">[ education ]</h3>
+                            ${data.education.map(e => `<p class="text-sm mb-2" contenteditable="true">${e.deg} @ ${e.sch} [${e.yr}]</p>`).join('')}
+                        </section>
+                        <section>
+                            <h3 class="text-xl font-bold mb-4" style="color: var(--resume-accent)">[ projects ]</h3>
+                            ${data.projects.map(p => `<div class="mb-4 text-sm"><b contenteditable="true">${p.tit}:</b> <span contenteditable="true">${p.des}</span></div>`).join('')}
+                        </section>
+                    </div>
+                </div>`;
+            } else if(t.type === 'creative') {
+                html = `<div class="a4-page flex" style="background: var(--resume-bg); color: var(--resume-text)">
+                    <div class="w-1/3 p-10 text-white" style="background: var(--resume-accent)">
+                        <h1 class="text-4xl font-black uppercase mb-10 leading-none" contenteditable="true">${data.name}</h1>
+                        <div class="text-xs space-y-6 font-bold uppercase opacity-80" contenteditable="true">${data.email}<br>${data.phone}<br>${data.location}</div>
+                        <div class="mt-20">
+                            <h3 class="font-black text-lg uppercase mb-4">Talents</h3>
+                            <div class="flex flex-wrap gap-2">${data.skills.map(s => `<span class="bg-white text-black px-2 py-1 rounded text-[10px] font-bold" contenteditable="true">${s}</span>`).join('')}</div>
+                        </div>
+                    </div>
+                    <div class="w-2/3 p-12">
+                        <h2 class="text-6xl font-black mb-4" contenteditable="true">${data.title}</h2>
+                        <div class="w-20 h-2 mb-10" style="background: var(--resume-accent)"></div>
+                        <section class="mb-10">
+                            <h3 class="text-2xl font-black uppercase mb-4" style="color: var(--resume-accent)">Education</h3>
+                            ${data.education.map(e => `<p class="text-lg mb-2"><b contenteditable="true">${e.deg}</b> / <span contenteditable="true">${e.sch}</span></p>`).join('')}
+                        </section>
+                        <section>
+                            <h3 class="text-2xl font-black uppercase mb-4" style="color: var(--resume-accent)">Portfolio</h3>
+                            ${data.projects.map(p => `<div class="mb-6"><b contenteditable="true">${p.tit}</b><p class="text-sm" contenteditable="true">${p.des}</p></div>`).join('')}
+                        </section>
+                    </div>
+                </div>`;
+            } else if(t.type === 'luxury') {
+                html = `<div class="a4-page p-16 text-center" style="background: var(--resume-bg); color: var(--resume-text)">
+                    <h1 class="text-6xl font-black mb-2" contenteditable="true">${data.name}</h1>
+                    <p class="text-2xl italic opacity-70 mb-8" contenteditable="true">${data.title}</p>
+                    <div class="flex justify-center gap-4 text-xs mb-16 uppercase tracking-widest opacity-60" contenteditable="true">${data.email} • ${data.phone} • ${data.location}</div>
+                    <div class="text-left space-y-12 max-w-2xl mx-auto">
+                        <section>
+                            <h3 class="text-xl font-bold uppercase border-b-2 mb-6 pb-2" style="border-color: var(--resume-accent)">Academic Background</h3>
+                            ${data.education.map(e => `<div class="flex justify-between mb-4"><b contenteditable="true">${e.deg}</b> <span contenteditable="true">${e.yr}</span></div>`).join('')}
+                        </section>
+                        <section>
+                            <h3 class="text-xl font-bold uppercase border-b-2 mb-6 pb-2" style="border-color: var(--resume-accent)">Distinguished Projects</h3>
+                            ${data.projects.map(p => `<div class="mb-6"><b class="text-lg" contenteditable="true">${p.tit}</b><p class="italic opacity-80" contenteditable="true">${p.des}</p></div>`).join('')}
+                        </section>
+                        <section>
+                            <h3 class="text-xl font-bold uppercase border-b-2 mb-6 pb-2" style="border-color: var(--resume-accent)">Core Competencies</h3>
+                            <p class="text-center text-lg tracking-widest" contenteditable="true">${data.skills.join(' • ')}</p>
+                        </section>
+                    </div>
+                </div>`;
+            } else {
+                html = `<div class="a4-page p-16" style="background: var(--resume-bg); color: var(--resume-text)">
+                    <div class="text-center mb-12">
+                        <h1 class="text-5xl font-bold" contenteditable="true">${data.name}</h1>
+                        <p class="text-xl uppercase tracking-widest" style="color: var(--resume-accent)" contenteditable="true">${data.title}</p>
+                        <p class="text-sm opacity-60 mt-2" contenteditable="true">${data.email} | ${data.phone} | ${data.location}</p>
+                    </div>
+                    <div class="space-y-10">
+                        <section>
+                            <h2 class="text-xl font-bold border-b-2 mb-4 pb-2" style="border-color: var(--resume-accent)">Education</h2>
+                            ${data.education.map(e => `<p class="mb-2"><b contenteditable="true">${e.deg}</b> — <span contenteditable="true">${e.sch}</span> (<span contenteditable="true">${e.yr}</span>)</p>`).join('')}
+                        </section>
+                        <section>
+                            <h2 class="text-xl font-bold border-b-2 mb-4 pb-2" style="border-color: var(--resume-accent)">Projects</h2>
+                            ${data.projects.map(p => `<div class="mb-4"><b contenteditable="true">${p.tit}</b><p class="text-sm opacity-80" contenteditable="true">${p.des}</p></div>`).join('')}
+                        </section>
+                        <section>
+                            <h2 class="text-xl font-bold border-b-2 mb-4 pb-2" style="border-color: var(--resume-accent)">Skills</h2>
+                            <p class="text-sm" contenteditable="true">${data.skills.join(', ')}</p>
+                        </section>
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
